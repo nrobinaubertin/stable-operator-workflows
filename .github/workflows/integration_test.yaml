@@ -213,7 +213,7 @@ jobs:
                 exit 1
             fi
       - uses: actions/checkout@v4.2.2
-      - uses: canonical/operator-workflows/internal/plan@main
+      - uses: nrobinaubertin/stable-operator-workflows/internal/plan@main
         id: plan
         with:
           identifier: ${{ inputs.identifier }}
@@ -234,7 +234,7 @@ jobs:
         run: |
           lxc profile set default security.nesting true
       - uses: actions/checkout@v4
-      - uses: canonical/operator-workflows/internal/build@main
+      - uses: nrobinaubertin/stable-operator-workflows/internal/build@main
         id: build
         with:
           build-plan: ${{ toJSON(matrix.build) }}
@@ -253,7 +253,7 @@ jobs:
     outputs:
       scans: ${{ steps.plan-scan.outputs.scans }}
     steps:
-      - uses: canonical/operator-workflows/internal/plan-scan@main
+      - uses: nrobinaubertin/stable-operator-workflows/internal/plan-scan@main
         id: plan-scan
         with:
           plan: ${{ needs.plan.outputs.plan }}
