@@ -252,7 +252,7 @@ jobs:
             options+=" --break-system-packages"
           fi
           python3 -m pip install check-jsonschema $options
-          curl -fLsSo $PWD/metadata.schema https://raw.githubusercontent.com/canonical/operator-workflows/main/.github/files/metadata.schema
+          curl -fLsSo $PWD/metadata.schema https://raw.githubusercontent.com/nrobinaubertin/stable-operator-workflows/main/.github/files/metadata.schema
           check-jsonschema metadata.yaml --schemafile metadata.schema
   lint-and-unit-test:
     name: Lint and unit tests
@@ -471,7 +471,7 @@ jobs:
       - name: Get default license configuration
         if: steps.licenserc-yaml.outputs.exists == 'false'
         run: |
-          curl -fLsSo .licenserc.yaml https://raw.githubusercontent.com/canonical/operator-workflows/main/.github/files/.licenserc.yaml
+          curl -fLsSo .licenserc.yaml https://raw.githubusercontent.com/nrobinaubertin/stable-operator-workflows/main/.github/files/.licenserc.yaml
       - name: Check license headers
         uses: apache/skywalking-eyes/header@main
         with:
